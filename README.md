@@ -18,7 +18,7 @@ require_once __DIR__.'/ClientBaseAPI/autoload.php';
 2. Создайте объект класса ClientBaseAPI\Handler.
 ```php
 // Вставьте вместо http://your-client-base.ru/
-//настоящий адрес вашей «Клиентской базы»,
+// настоящий адрес вашей «Клиентской базы»,
 // вместо login — логин вашего аккаунта в «Клиентской базе»,
 // вместо key — сгенерированный пунктом выше ключ.
 $cbapi = new Handler('http://your-client-base.ru/', 'login', 'key');
@@ -27,16 +27,8 @@ $cbapi = new Handler('http://your-client-base.ru/', 'login', 'key');
 ```php
 // Пример добавления записи в таблицу
 // с помощью метода ClientBaseAPI\Handler::dataCreate().
-$command = [
-	'table_id' => 74,
-	'cals' => true,
-	'data' => [
-		'row' => [
-			'f807' => 'Хлеб',
-			'f810' => 17
-		]
-	]
-];
+$command = ['table_id' => 74, 'cals' => true];
+$command['data']['row'] = ['f807' => 'Хлеб', 'f810' => 17];
 // Формат ответа см. здесь:
 // https://clientbase.ru/help/for_admin_16/api/data/create/
 $result = $cbapi->dataCreate($command);
