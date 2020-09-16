@@ -28,7 +28,11 @@ class Handler implements HandlerInterface
     public function __construct(string $url, string $login, string $key)
     {
         
-        $this->url = $url;
+        // Просто запоминаем переданные настройки подключения к API КБ.
+        $this->url = substr($url, 0, 4) === 'http' ? $url : 'http://'.$url;
+
+        if (substr($this->url, -1) !== '/') $this->url .= '/';
+
         $this->login = $login;
         $this->key = $key;
 

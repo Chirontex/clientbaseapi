@@ -18,11 +18,11 @@
  */
 spl_autoload_register(function($classname) {
 
-    if (strpos($classname, 'ClientBaseAPI')) {
+    if (strpos($classname, 'ClientBaseAPI') !== false) {
 
         $path = __DIR__.'/classes/';
 
-        if (strpos($classname, 'Interface')) $path .= 'interfaces/';
+        if (strpos($classname, 'Interface') !== false) $path .= 'interfaces/';
 
         $filename = substr($classname, strpos($classname, 'ClientBaseAPI\\') + 14).'.php';
 
