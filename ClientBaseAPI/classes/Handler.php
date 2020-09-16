@@ -1,6 +1,6 @@
 <?php
 /**
- *    Client Base API Handler ver. 0.5
+ *    Client Base API Handler ver. 0.55
  *    Copyright (C) 2020  Dmitry Shumilin (dr.noisier@yandex.ru)
  *
  *    This program is free software: you can redistribute it and/or modify

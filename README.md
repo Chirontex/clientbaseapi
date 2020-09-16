@@ -1,7 +1,7 @@
 # Client Base API Handler
 **Client Base API Handler** — модуль для работы с API CRM-платформы «Клиентская база».
 
-![](https://img.shields.io/badge/PHP-7%2B-yellow) ![](https://img.shields.io/badge/version-0.5-informational)
+![](https://img.shields.io/badge/PHP-7%2B-yellow) ![](https://img.shields.io/badge/version-0.55-informational)
 
 В данной версии доступны только CRUD-операции с данными в таблицах.
 
@@ -10,6 +10,9 @@
 2. Подключите автозагрузчик.
 ```php
 use ClientBaseAPI\Handler;
+// Пример подключения в том случае, если модуль был распакован
+// в корневую папку вашего приложения (сайта).
+// Укажите другой путь подключения, если это не так.
 require_once __DIR__.'/ClientBaseAPI/autoload.php';
 ```
 
@@ -23,7 +26,7 @@ require_once __DIR__.'/ClientBaseAPI/autoload.php';
 // вместо key — сгенерированный пунктом выше ключ.
 $cbapi = new Handler('http://your-client-base.ru/', 'login', 'key');
 ```
-3. Для доступа к CRUD-операциям используйте методы dataCreate(), dataRead(), dataUpdate() и dataDelete(), передавая в них в качестве аргумента массив с командой, составленный согласно [официальной документации «Клиенской базы»](https://clientbase.ru/help/for_admin_16/api/ "официальной документации «Клиенской базы"). Также, вы можете использовать метод crud(), однако в случае с ним первым аргументом должно идти название нужной CRUD-операции (например, read), а вторым — массив с командой.
+3. Для доступа к CRUD-операциям используйте методы dataCreate(), dataRead(), dataUpdate() и dataDelete(), передавая в них в качестве аргумента массив с командой, составленный согласно [официальной документации «Клиенской базы»](https://clientbase.ru/help/for_admin_16/api/ "официальной документации «Клиенской базы»"). Также, вы можете использовать метод crud(), однако в случае с ним первым аргументом должно идти название нужной CRUD-операции (например, create), а вторым — массив с командой. Чтобы не ошибиться в написании названия CRUD-операции, лучше использовать для её указания соответствующую константу класса HandlerCRUD.
 ```php
 // Пример добавления записи в таблицу
 // с помощью метода ClientBaseAPI\Handler::dataCreate().
@@ -34,5 +37,5 @@ $command['data']['row'] = ['f807' => 'Хлеб', 'f810' => 17];
 $result = $cbapi->dataCreate($command);
 // Та же самая операция,
 // но с использованием метода ClientBaseAPI\Handler::crud().
-$result = $cbapi->crud('create', $command);
+$result = $cbapi->crud(HandlerCRUD::CREATE, $command);
 ```
