@@ -18,6 +18,9 @@
  */
 namespace ClientBaseAPI;
 
+/**
+ * The class containing constants with CRUD-operations names.
+ */
 class HandlerCRUD
 {
 

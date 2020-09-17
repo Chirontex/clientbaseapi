@@ -67,6 +67,7 @@ interface HandlerInterface
      * A generic method for working with data in tables.
      * 
      * @param string $action
+     * Preferred using HandlerCRUD constants.
      * @param array $command
      * @return mixed
      */
